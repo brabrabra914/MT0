@@ -1,0 +1,85 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#2c1810;--accent:#8b4513;--gold:#d4af37;--cream:#f5f0e8;--forest:#2d5016;--burgundy:#722f37;--preparing:#1e5f74}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#1a0f0a 0%,#2c1810 50%,#1a1a2e 100%);min-height:100vh;color:var(--cream);padding:2rem 2.5rem;line-height:1.5}
+.container{max-width:960px;margin:0 auto}
+header{text-align:center;margin-bottom:2.5rem;padding:1.5rem}
+header h1{font-size:2rem;font-weight:700;color:var(--gold);text-shadow:0 0 20px rgba(212,175,55,0.3)}
+.subtitle{color:rgba(245,240,232,0.7);font-size:1rem;margin-top:0.25rem}
+section{background:rgba(44,24,16,0.5);border:1px solid rgba(212,175,55,0.18);border-radius:14px;padding:1.75rem;margin-bottom:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.25)}
+section h2{font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:1.1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(212,175,55,0.25);letter-spacing:0.02em}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;margin-bottom:0.4rem;font-size:0.9rem;color:rgba(245,240,232,0.9)}
+.form-group select,.form-group input{width:100%;padding:0.6rem 0.8rem;border:1px solid rgba(212,175,55,0.3);border-radius:8px;background:rgba(26,15,10,0.8);color:var(--cream);font-family:inherit;font-size:1rem}
+.form-group select:focus,.form-group input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(212,175,55,0.2)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.time-input-group,.date-input-group{display:flex;align-items:center;gap:0.5rem}
+.date-input-group select,.time-input-group select{flex:1;padding:0.6rem 0.8rem;border:1px solid rgba(212,175,55,0.3);border-radius:8px;background:rgba(26,15,10,0.8);color:var(--cream);font-family:inherit;font-size:1rem}
+.time-separator{color:var(--gold);font-weight:600}
+.all-registered-msg{color:var(--gold);margin-top:0.5rem;font-size:0.9rem}
+.btn-primary{width:100%;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--gold),var(--accent));border:none;border-radius:8px;color:var(--primary);font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:transform 0.2s,box-shadow 0.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(212,175,55,0.4)}
+.btn-primary:active{transform:translateY(0)}
+.registered-list,.remaining-list{min-height:60px}
+.empty-message{color:rgba(245,240,232,0.55);font-style:italic;padding:1.5rem 1rem;text-align:center;font-size:0.95rem}
+.calendar-wrapper{overflow-x:auto;border-radius:10px}
+.calendar-wrapper:not(.has-data) .calendar-table{display:none}
+.calendar-wrapper.has-data .empty-message{display:none}
+.calendar-table{width:100%;border-collapse:collapse;font-size:0.9rem;table-layout:fixed}
+.calendar-table th,.calendar-table td{border:1px solid rgba(212,175,55,0.2);padding:0.75rem;text-align:left;vertical-align:top;width:1%;background:rgba(26,15,10,0.3)}
+.calendar-table th{background:rgba(212,175,55,0.12);color:var(--gold);font-weight:600;min-width:130px;text-align:center;font-size:0.9rem;letter-spacing:0.02em}
+.calendar-table td{min-width:130px;height:220px}
+.calendar-table .course-cell{display:flex;flex-direction:column;gap:0.35rem;background:rgba(30,95,116,0.35);color:var(--cream);font-weight:500;border-radius:8px;padding:0.5rem 0.6rem;font-size:0.85rem;margin-bottom:0.5rem;border-left:4px solid var(--preparing);overflow:hidden;min-width:0;min-height:96px;height:96px;box-sizing:border-box;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.calendar-table .course-cell.preparing{background:rgba(45,80,22,0.35);border-left-color:var(--forest)}
+.calendar-table .course-cell.preparing .course-time{color:var(--gold)}
+.calendar-table .course-cell.completed{background:rgba(212,175,55,0.2);border-left-color:var(--gold)}
+.calendar-table .course-cell.completed .course-name{color:rgba(245,240,232,0.98);text-decoration:underline}
+.calendar-table .course-cell.completed .course-time{color:var(--gold)}
+.calendar-table .course-cell.special{background:rgba(114,47,55,0.35);border-left-color:var(--burgundy)}
+.calendar-table .course-cell.special .course-time{color:rgba(245,240,232,0.9)}
+.calendar-table .course-cell:last-child{margin-bottom:0}
+.calendar-table .course-cell .course-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4;font-size:0.88em}
+.calendar-table .course-cell .course-time{font-size:0.78rem;color:var(--gold);opacity:0.95}
+.calendar-table .course-cell .cell-buttons{display:flex;flex-wrap:nowrap;gap:0.35rem;margin-top:auto;align-items:center;max-width:100%;flex-shrink:0;padding-top:0.25rem;border-top:1px solid rgba(255,255,255,0.08);justify-content:space-between}
+.calendar-table .course-cell .cell-buttons .remove-btn{margin-left:auto}
+.calendar-table .course-cell .cell-buttons .done-btn,.calendar-table .course-cell .cell-buttons .remove-btn{white-space:nowrap;flex-shrink:0;padding:0.3rem 0.5rem;border-radius:6px;font-size:0.7rem;cursor:pointer;font-family:inherit;transition:opacity 0.2s}
+.calendar-table .course-cell .cell-buttons .done-btn:hover,.calendar-table .course-cell .cell-buttons .remove-btn:hover{opacity:0.9}
+.calendar-table .course-cell .done-btn{background:rgba(30,95,116,0.7);border:none;color:#93c5fd}
+.calendar-table .course-cell .done-btn:hover{background:var(--preparing)}
+.calendar-table .course-cell.preparing .done-btn{background:rgba(45,80,22,0.7);color:var(--cream)}
+.calendar-table .course-cell.preparing .done-btn:hover{background:var(--forest)}
+.calendar-table .course-cell.completed .done-btn{background:rgba(212,175,55,0.5);color:var(--gold)}
+.calendar-table .course-cell.completed .done-btn:hover{background:rgba(212,175,55,0.7)}
+.calendar-table .course-cell .remove-btn{background:rgba(114,47,55,0.6);border:none;color:var(--cream);font-size:1.15em;line-height:1}
+.calendar-table .course-cell .remove-btn:hover{background:var(--burgundy)}
+.sidebar-magic{position:fixed;left:0;top:0;width:220px;height:100vh;background:rgba(26,15,10,0.97);border-right:1px solid rgba(212,175,55,0.25);padding:1.25rem;overflow-y:auto;z-index:100}
+.sidebar-magic h3{font-size:1rem;color:var(--gold);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(212,175,55,0.3);letter-spacing:0.02em}
+.sidebar-magic-list{list-style:none}
+.sidebar-magic-year{margin-bottom:1.25rem}
+.sidebar-magic-year h4{font-size:0.82rem;color:var(--gold);margin-bottom:0.5rem;opacity:0.95;letter-spacing:0.02em}
+.sidebar-magic-list li{padding:0.5rem 0.7rem;margin-bottom:0.4rem;border-radius:8px;font-size:0.88rem;cursor:pointer;transition:all 0.2s;line-height:1.3}
+.sidebar-magic-list li:hover{opacity:0.9}
+.sidebar-magic-list li.learned{background:rgba(45,80,22,0.4);color:#4ade80;border-left:3px solid var(--forest)}
+.sidebar-magic-list li.not-learned{background:rgba(114,47,55,0.3);color:#f87171;border-left:3px solid var(--burgundy)}
+.main-with-sidebar{margin-left:220px;min-height:100vh}
+.calendar-table .empty-cell{color:rgba(245,240,232,0.25);font-size:0.85rem;text-align:center;padding:1rem}
+.stats-bar{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;padding:0.9rem 1.2rem;background:rgba(0,0,0,0.25);border-radius:10px;border:1px solid rgba(212,175,55,0.15)}
+.stats-bar span{color:rgba(245,240,232,0.9);font-size:0.9rem}
+.stats-bar .stat-completed{color:var(--gold)}
+.btn-clear-cal{padding:0.5rem 1rem;background:rgba(114,47,55,0.5);border:1px solid rgba(212,175,55,0.25);border-radius:8px;color:var(--cream);font-size:0.88rem;cursor:pointer;font-family:inherit;margin-left:auto;transition:all 0.2s}
+.btn-clear-cal:hover{background:rgba(114,47,55,0.75)}
+.stats-bar{display:flex;align-items:center;flex-wrap:wrap}
+.calendar-table th.today{background:rgba(212,175,55,0.25);box-shadow:inset 0 0 0 2px var(--gold)}
+.remaining-item{padding:0.7rem 1.1rem;background:rgba(139,69,19,0.18);border-radius:10px;margin-bottom:0.5rem;color:rgba(245,240,232,0.9);border-left:4px solid var(--accent);transition:all 0.2s;line-height:1.4}
+.remaining-item:not(.registered){cursor:pointer}
+.remaining-item:not(.registered):hover{background:rgba(139,69,19,0.35)}
+.remaining-item.registered{opacity:0.5;text-decoration:line-through;cursor:default}
+.remaining-hint{font-size:0.85rem;color:rgba(245,240,232,0.6);margin-bottom:0.5rem}
+.toast-container{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:1000;display:flex;flex-direction:column;gap:0.5rem;pointer-events:none}
+.toast{padding:0.75rem 1.25rem;border-radius:8px;background:rgba(44,24,16,0.95);border:1px solid rgba(212,175,55,0.3);color:var(--cream);font-size:0.9rem;box-shadow:0 4px 20px rgba(0,0,0,0.4);animation:toastIn 0.3s ease;transition:opacity 0.3s ease,transform 0.3s ease}
+.toast.success{border-left:4px solid var(--forest)}
+.toast.error{border-left:4px solid var(--burgundy)}
+.toast.info{border-left:4px solid var(--gold)}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.toast{animation:none;transition:none}.btn-primary:hover{transform:none}*{scroll-behavior:auto!important}}
+@media print{.registration-section,.remaining-section,.toast-container,.stats-bar,.sidebar-magic{display:none!important}.main-with-sidebar{margin-left:0!important}body{background:#fff;color:#333}.summary-section{background:#fff;border:1px solid #ccc;box-shadow:none}.calendar-table th,.calendar-table td{border-color:#333;color:#333}.calendar-table th{background:#eee}.calendar-table .course-cell{background:#f9f9f9;border-left-color:#333}.calendar-table .course-cell .course-time,.calendar-table .cell-buttons{display:none}}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}body{padding:1rem}.calendar-table{font-size:0.75rem}.calendar-table th,.calendar-table td{padding:0.35rem 0.25rem;min-width:95px}.calendar-table td{height:200px}.calendar-table .course-cell{font-size:0.7rem;min-height:88px;height:88px}.calendar-table .course-cell .cell-buttons .done-btn,.calendar-table .course-cell .cell-buttons .remove-btn{font-size:0.6rem;padding:0.15rem 0.25rem}.sidebar-magic{width:180px;font-size:0.8rem}.main-with-sidebar{margin-left:180px}}
