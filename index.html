@@ -4,7 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ลงทะเบียนวิชาเรียน - โรงเรียนเวทมนตร์</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#2c1810;--accent:#8b4513;--gold:#d4af37;--cream:#f5f0e8;--forest:#2d5016;--burgundy:#722f37;--preparing:#1e5f74}
+        body{font-family:'Sarabun','Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#0f0a1a 0%,#1a0f0a 25%,#2c1810 50%,#1a1a2e 75%,#0f1a2e 100%);min-height:100vh;color:var(--cream);padding:2rem 2.5rem;line-height:1.5;position:relative;overflow-x:hidden}
+        body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(212,175,55,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(114,47,55,0.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+        .container{max-width:960px;margin:0 auto;position:relative;z-index:1}
+        header{text-align:center;margin-bottom:2.5rem;padding:2rem 1.5rem;background:linear-gradient(180deg,rgba(212,175,55,0.12) 0%,transparent 100%);border-radius:16px;border:1px solid rgba(212,175,55,0.25);box-shadow:0 0 40px rgba(212,175,55,0.15),inset 0 1px 0 rgba(255,255,255,0.05)}
+        header h1{font-size:2.2rem;font-weight:700;color:var(--gold);text-shadow:0 0 30px rgba(212,175,55,0.5),0 2px 4px rgba(0,0,0,0.3);letter-spacing:0.02em}
+        .subtitle{color:rgba(245,240,232,0.8);font-size:1.1rem;margin-top:0.5rem;letter-spacing:0.08em}
+        section{background:rgba(26,15,10,0.7);border:1px solid rgba(212,175,55,0.22);border-radius:16px;padding:1.75rem;margin-bottom:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.35),0 0 0 1px rgba(0,0,0,0.1);backdrop-filter:blur(8px)}
+        section h2{font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:1.1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(212,175,55,0.3);letter-spacing:0.02em;text-shadow:0 0 15px rgba(212,175,55,0.3)}
+        .form-group{margin-bottom:1rem}
+        .form-group label{display:block;margin-bottom:0.4rem;font-size:0.95rem;color:rgba(245,240,232,0.95)}
+        .form-group select,.form-group input{width:100%;padding:0.7rem 0.9rem;border:1px solid rgba(212,175,55,0.4);border-radius:10px;background:rgba(15,8,5,0.9);color:var(--cream);font-family:inherit;font-size:1rem;transition:border-color 0.2s,box-shadow 0.2s}
+        .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,0.25)}
+        .form-group input::placeholder{color:rgba(245,240,232,0.4)}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .time-input-group,.date-input-group{display:flex;align-items:center;gap:0.5rem}
+        .date-input-group select,.time-input-group select{flex:1;padding:0.6rem 0.8rem;border:1px solid rgba(212,175,55,0.4);border-radius:8px;background:rgba(15,8,5,0.9);color:var(--cream);font-family:inherit;font-size:1rem}
+        .time-separator{color:var(--gold);font-weight:600}
+        .btn-primary{width:100%;padding:0.9rem 1.5rem;background:linear-gradient(135deg,#e8c547 0%,var(--gold) 30%,var(--accent) 100%);border:none;border-radius:10px;color:var(--primary);font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:0.5rem;transition:transform 0.2s,box-shadow 0.2s;text-shadow:0 1px 0 rgba(255,255,255,0.3);box-shadow:0 4px 15px rgba(212,175,55,0.3)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(212,175,55,0.45)}
+        .sidebar-magic{position:fixed;left:0;top:0;width:220px;height:100vh;background:linear-gradient(180deg,rgba(15,8,5,0.98) 0%,rgba(26,15,10,0.97) 100%);border-right:2px solid rgba(212,175,55,0.3);padding:1.25rem;overflow-y:auto;z-index:100;box-shadow:4px 0 20px rgba(0,0,0,0.4)}
+        .sidebar-magic h3{font-size:1rem;color:var(--gold);margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(212,175,55,0.3);text-shadow:0 0 10px rgba(212,175,55,0.4)}
+        .main-with-sidebar{margin-left:220px;min-height:100vh}
+        .empty-message{color:rgba(245,240,232,0.6);font-size:1rem;padding:1.5rem;text-align:center;font-style:italic}
+        .stats-bar{display:flex;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;padding:0.9rem 1.2rem;background:rgba(0,0,0,0.25);border-radius:10px;border:1px solid rgba(212,175,55,0.15)}
+        .stats-bar span{color:rgba(245,240,232,0.9)}
+        .btn-clear-cal{padding:0.5rem 1rem;background:rgba(114,47,55,0.5);border:1px solid rgba(212,175,55,0.25);border-radius:8px;color:var(--cream);font-size:0.88rem;cursor:pointer;font-family:inherit;margin-left:auto}
+        .remaining-item{padding:0.7rem 1.1rem;background:rgba(139,69,19,0.18);border-radius:10px;margin-bottom:0.5rem;color:rgba(245,240,232,0.9);border-left:4px solid var(--accent);line-height:1.4;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:transform 0.2s}
+        .remaining-item:not(.registered){cursor:pointer}
+        .remaining-item:not(.registered):hover{transform:translateX(4px);box-shadow:0 4px 12px rgba(212,175,55,0.2);background:rgba(139,69,19,0.35)}
+        .remaining-item.registered{opacity:0.5;text-decoration:line-through;cursor:default}
+        .remaining-hint{font-size:0.85rem;color:rgba(245,240,232,0.6);margin-bottom:0.5rem}
+    </style>
 </head>
 <body>
     <aside id="sidebarMagic" class="sidebar-magic" aria-label="มีเวทย์พิเศษ">
